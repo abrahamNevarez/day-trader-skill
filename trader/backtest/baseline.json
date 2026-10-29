@@ -1,0 +1,10 @@
+{
+ "rule": "no signal: enter every 5th session, same stop, target and 10-session exit",
+ "trades": 104730,
+ "win_rate": 0.4564403704764633,
+ "avg_r": 0.0686455268291594,
+ "ci95": [
+  0.05859337899643466,
+  0.07869767466188415
+ ]
+}

@@ -1,0 +1,11 @@
+__pycache__/
+trader/backtest/cache/
+trader/entry.json
+trader/orders.json
+trader/plan.json
+trader/prices.json
+trader/state/
+trader/timemachine.json
+trader/universe.txt
+trader/watchlist.json
+trader/backtest/daily_trades.json
