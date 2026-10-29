@@ -2,7 +2,7 @@
   "note": "PAPER TRADING ONLY. Simulated fills at free, delayed Yahoo quotes. No broker was connected and no real order was placed.",
   "account": {
     "start_balance": 100.0,
-    "balance": 100.0
+    "balance": 100.14
   },
   "trades": [
     {
@@ -13,8 +13,13 @@
       "stop": 21.91,
       "target": 22.75,
       "risk_usd": 1.12,
-      "status": "open",
-      "why": "level breakout of the day's high (22.09) after an earlier ORB; risk PASS; time machine: 97% neither by 3:55, avg R -0.03 (coin flip)"
+      "status": "closed",
+      "why": "level breakout of the day's high (22.09) after an earlier ORB; risk PASS; time machine: 97% neither by 3:55, avg R -0.03 (coin flip)",
+      "exit_time": "2026-10-29 15:55 ET",
+      "exit_price": 22.23,
+      "exit_reason": "flat by 3:55 PM at the delayed quote",
+      "pnl_usd": 0.14,
+      "result": "win"
     }
   ],
   "checks": [
@@ -71,6 +76,36 @@
       "ticker": "CMCSA",
       "quote": 22.185,
       "status": "open"
+    },
+    {
+      "at": "15:38:50 ET",
+      "ticker": "CMCSA",
+      "quote": 22.21,
+      "status": "open"
+    },
+    {
+      "at": "15:43:50 ET",
+      "ticker": "CMCSA",
+      "quote": 22.195,
+      "status": "open"
+    },
+    {
+      "at": "15:48:51 ET",
+      "ticker": "CMCSA",
+      "quote": 22.155,
+      "status": "open"
+    },
+    {
+      "at": "15:53:51 ET",
+      "ticker": "CMCSA",
+      "quote": 22.21,
+      "status": "open"
+    },
+    {
+      "at": "15:55:05 ET",
+      "ticker": "CMCSA",
+      "quote": 22.225,
+      "status": "closed"
     }
   ]
 }
