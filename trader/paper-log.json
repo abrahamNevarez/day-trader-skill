@@ -1,0 +1,34 @@
+{
+  "note": "PAPER TRADING ONLY. Simulated fills at free, delayed Yahoo quotes. No broker was connected and no real order was placed.",
+  "account": {
+    "start_balance": 100.0,
+    "balance": 100.0
+  },
+  "trades": [
+    {
+      "ticker": "CMCSA",
+      "shares": 4,
+      "entry_time": "2026-10-29 14:58 ET",
+      "entry_price": 22.19,
+      "stop": 21.91,
+      "target": 22.75,
+      "risk_usd": 1.12,
+      "status": "open",
+      "why": "level breakout of the day's high (22.09) after an earlier ORB; risk PASS; time machine: 97% neither by 3:55, avg R -0.03 (coin flip)"
+    }
+  ],
+  "checks": [
+    {
+      "at": "14:58:41 ET",
+      "ticker": "CMCSA",
+      "quote": 22.185,
+      "status": "open"
+    },
+    {
+      "at": "14:58:47 ET",
+      "ticker": "CMCSA",
+      "quote": 22.185,
+      "status": "open"
+    }
+  ]
+}
