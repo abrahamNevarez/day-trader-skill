@@ -65,6 +65,12 @@
       "ticker": "CMCSA",
       "quote": 22.165,
       "status": "open"
+    },
+    {
+      "at": "15:33:50 ET",
+      "ticker": "CMCSA",
+      "quote": 22.185,
+      "status": "open"
     }
   ]
 }
