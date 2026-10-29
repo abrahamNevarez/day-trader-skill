@@ -172,9 +172,30 @@ def daily_trades(sym, rows, hold=10, look=100):
     return trades
 
 
+def baseline_trades(rows, hold=10, look=100, every=5):
+    """Same entry/stop/target/exit as daily_trades, but on every 5th session, no signal."""
+    rs = []
+    for i in range(look, len(rows) - hold - 1, every):
+        entry, risk = rows[i + 1][1], 1.5 * atr(rows, i)
+        if risk <= 0:
+            continue
+        stop, target, px = entry - risk, entry + 2 * risk, None
+        for k in range(i + 1, i + 1 + hold):
+            _, o, h, l, c, _ = rows[k]
+            if k > i + 1 and o <= stop: px = o
+            elif k > i + 1 and o >= target: px = o
+            elif l <= stop: px = stop
+            elif h >= target: px = target
+            if px is not None: break
+        if px is None:
+            px = rows[i + hold][4]
+        rs.append({"r": (px - entry) / risk, "shares_fit": 0, "pnl_fit": 0})
+    return rs
+
+
 def cmd_daily():
     syms = universe()
-    allt, bad, span = [], [], {}
+    allt, bad, span, base = [], [], {}, []
     for n, sym in enumerate(syms):
         try:
             rows = series(cached_chart(sym, "10y", "1d"))
@@ -186,9 +207,13 @@ def cmd_daily():
             continue
         span[sym] = (datetime.datetime.utcfromtimestamp(rows[0][0]).date().isoformat(), len(rows))
         allt += daily_trades(sym, rows)
+        base += baseline_trades(rows)
         if (n + 1) % 25 == 0:
             print("  daily %d of %d" % (n + 1, len(syms)), file=sys.stderr)
     save("daily_trades.json", {"symbols": len(span), "failed": bad, "spans": span, "trades": allt})
+    b = stats(base)
+    save("baseline.json", {"rule": "no signal: enter every 5th session, same stop, target and 10-session exit",
+                           "trades": b["trades"], "win_rate": b["win_rate"], "avg_r": b["avg_r"], "ci95": b["ci95"]})
     print("daily: %d trades on %d symbols (%d failed)" % (len(allt), len(span), len(bad)))
 
 
@@ -291,8 +316,10 @@ def stats(trades):
             "fit_avg_r": (sum(t["r"] for t in fit) / len(fit)) if fit else None}
 
 
-def verdict(s):
+def verdict(s, base=None):
     lo, hi = s["ci95"]
+    if base is not None and lo <= base["avg_r"]:
+        return "no edge over the no-signal baseline (%+.3f R): the plus is just being long a rising market" % base["avg_r"]
     if lo > 0:
         return "positive, and the 95% range stays above zero (before costs)"
     if hi < 0:
@@ -309,7 +336,7 @@ def cmd_report():
     lines += ["# Backtest results", "",
               "Built %s from free Yahoo data. **Not financial advice. Past results do not predict future ones.**" % u["built"][:10], "",
               "Universe: %s. %d symbols." % (u["rule"], len(u["symbols"])), "",
-              "| setup | data | trades | win rate | loss rate | avg R (95%% range) | P&L at $2 risk | trades a $100 / $2 account could take | their P&L | verdict |",
+              "| setup | data | trades | win rate | loss rate | avg R (95% range) | P&L at $2 risk | trades a $100 / $2 account could take | their P&L | verdict |",
               "| --- | --- | ---: | ---: | ---: | --- | ---: | ---: | ---: | --- |"]
     rows = []
     for key, label in S.SETUPS:
@@ -318,7 +345,14 @@ def cmd_report():
         rows.append((label, "daily, %s to now" % first, [t for t in d["trades"] if t["setup"] == key]))
     rows.append(("opening-range breakout (15 min)", "5-min, %s to %s (%d sessions)" % (o["sessions"][0], o["sessions"][-1], len(o["sessions"])), o["trades"]))
     summary = {}
+    if os.path.exists(out("baseline.json")):
+        b = json.load(open(out("baseline.json")))
+        rows.insert(4, ("baseline: no signal, every 5th day", "daily, same rules", None))
     for label, data, tr in rows:
+        if tr is None:
+            lines.append("| %s | %s | %d | %.1f%% | | %+.3f (%+.3f to %+.3f) | | | | the bar every setup must beat |" % (
+                label, data, b["trades"], 100 * b["win_rate"], b["avg_r"], b["ci95"][0], b["ci95"][1]))
+            continue
         s = stats(tr)
         summary[label] = s
         if not s:
@@ -326,13 +360,16 @@ def cmd_report():
             continue
         lines.append("| %s | %s | %d | %.1f%% | %.1f%% | %+.3f (%+.3f to %+.3f) | $%+.2f | %d | $%+.2f | %s |" % (
             label, data, s["trades"], 100 * s["win_rate"], 100 * s["loss_rate"], s["avg_r"], s["ci95"][0], s["ci95"][1],
-            s["pnl_2usd"], s["fit_trades"], s["fit_pnl"], verdict(s)))
+            s["pnl_2usd"], s["fit_trades"], s["fit_pnl"], verdict(s, b if data.startswith("daily") and os.path.exists(out("baseline.json")) else None)))
     lines += ["", "Win = exit above entry, loss = exit below. Every trade is counted, including several symbols on the same day.", "",
               "## Data limits, plainly", "",
               "- **Survivorship bias.** The universe is today's liquid stocks under $100. Companies that went bust or were delisted in the last 10 years are missing, and today's winners are over-represented. That flatters the daily long setups.",
               "- **Price filter is today's price.** A stock under $100 today may have been above it years ago (and the reverse). Yahoo's daily bars are split-adjusted, so old prices are not what traded then.",
               "- **Yahoo's 10y daily range** may start later for recent listings; %d symbols had data, earliest bar %s." % (d["symbols"], first),
               "- **The ORB test is only %d sessions** (Yahoo keeps about 60 days of 5-minute bars). That is one market regime; treat it as a small sample." % len(o["sessions"]),
+              "- **Overlapping trades.** Daily signals on many stocks cluster on the same days (one market move), so the 95% ranges are too narrow; the real uncertainty is wider.",
+              "- **The baseline row matters most.** It takes the same long trade with the same stop and target on every 5th day, no signal. Over a 10-year rising market that alone is positive. A setup only shows an edge if it beats the baseline, not zero.",
+              "- **The $ columns add up every signal.** A $100 account holds one position at a time, so it could never take thousands of overlapping trades; read the dollars as average R x $2, not as money a $100 account would have made.",
               "- **No costs.** No spread, slippage or commissions. A one-cent spread on a $0.20 opening-range risk is 5% of R each way.",
               "- **Fills are idealized.** Stops fill at the stop (or the open on a gap), targets at the target, and a bar that touches both counts as a stop.",
               "- **The daily setups have no stop or target in the scanner.** The 1.5 x ATR stop, 2R target and 10-session limit were chosen here, before running, and were not tuned.",

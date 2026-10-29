@@ -8,3 +8,4 @@ trader/state/
 trader/timemachine.json
 trader/universe.txt
 trader/watchlist.json
+trader/backtest/daily_trades.json
