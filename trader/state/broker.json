@@ -83,6 +83,16 @@
       "qty": "6",
       "price": 42.22,
       "plain": "BUY 6 BSY at 42.22"
+    },
+    {
+      "at": "2026-11-03T13:38:54-05:00",
+      "date": "2026-11-03",
+      "status": "filled",
+      "symbol": "CHPT",
+      "side": "sell",
+      "qty": "15",
+      "price": 10.99,
+      "plain": "SELL 15 CHPT at 10.99"
     }
   ]
 }
