@@ -41,6 +41,38 @@
       "qty": "15",
       "price": 10.52,
       "plain": "BUY 15 CHPT at 10.52"
+    },
+    {
+      "at": "2026-11-03T11:03:47-05:00",
+      "date": "2026-11-03",
+      "index": 1,
+      "fingerprint": "bd1ac6f2a26b78c8",
+      "symbol": "BSY",
+      "side": "buy",
+      "qty": "6",
+      "kind": "entry",
+      "max_loss": 4.56,
+      "stop": 41.54,
+      "plain": "BUY 6 BSY, limit 42.30, good for today / stop-loss 41.54 / take-profit 43.06 / max loss about $4.56 if the stop fills at 41.54 (it can fill worse in a fast market)",
+      "status": "approved",
+      "reply": "Yes",
+      "paper": true,
+      "broker": "alpaca"
+    },
+    {
+      "at": "2026-11-03T11:03:52-05:00",
+      "date": "2026-11-03",
+      "index": 1,
+      "fingerprint": "bd1ac6f2a26b78c8",
+      "symbol": "BSY",
+      "side": "buy",
+      "plain": "BUY 6 BSY, limit 42.30, good for today / stop-loss 41.54 / take-profit 43.06 / max loss about $4.56 if the stop fills at 41.54 (it can fill worse in a fast market)",
+      "status": "placed",
+      "qty": "6",
+      "kind": "entry",
+      "max_loss": 4.56,
+      "stop": 41.54,
+      "broker_order_id": "4f39ef89-ab40-479f-a5f6-961b5f8e8212"
     }
   ]
 }
