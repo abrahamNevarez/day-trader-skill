@@ -73,6 +73,16 @@
       "max_loss": 4.56,
       "stop": 41.54,
       "broker_order_id": "4f39ef89-ab40-479f-a5f6-961b5f8e8212"
+    },
+    {
+      "at": "2026-11-03T11:32:44-05:00",
+      "date": "2026-11-03",
+      "status": "filled",
+      "symbol": "BSY",
+      "side": "buy",
+      "qty": "6",
+      "price": 42.22,
+      "plain": "BUY 6 BSY at 42.22"
     }
   ]
 }

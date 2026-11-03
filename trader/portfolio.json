@@ -1,5 +1,5 @@
 {
-  "cash": 342.2,
+  "cash": 88.88,
   "positions": [
     {
       "ticker": "CHPT",
@@ -10,6 +10,18 @@
           "date": "2026-11-03",
           "shares": 15.0,
           "cost": 157.8
+        }
+      ]
+    },
+    {
+      "ticker": "BSY",
+      "shares": 6.0,
+      "lots": [
+        {
+          "id": "BSY-1",
+          "date": "2026-11-03",
+          "shares": 6.0,
+          "cost": 253.32
         }
       ]
     }
