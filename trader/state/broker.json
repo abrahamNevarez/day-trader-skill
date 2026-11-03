@@ -31,6 +31,16 @@
       "max_loss": 6.45,
       "stop": 10.11,
       "broker_order_id": "8d1c1061-5c1a-4a32-aa85-ce4eebb74cdc"
+    },
+    {
+      "at": "2026-11-03T10:29:09-05:00",
+      "date": "2026-11-03",
+      "status": "filled",
+      "symbol": "CHPT",
+      "side": "buy",
+      "qty": "15",
+      "price": 10.52,
+      "plain": "BUY 15 CHPT at 10.52"
     }
   ]
 }

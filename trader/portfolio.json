@@ -1,0 +1,17 @@
+{
+  "cash": 342.2,
+  "positions": [
+    {
+      "ticker": "CHPT",
+      "shares": 15.0,
+      "lots": [
+        {
+          "id": "CHPT-1",
+          "date": "2026-11-03",
+          "shares": 15.0,
+          "cost": 157.8
+        }
+      ]
+    }
+  ]
+}
