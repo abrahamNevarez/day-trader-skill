@@ -1,17 +1,4 @@
 {
-  "cash": 253.73,
-  "positions": [
-    {
-      "ticker": "BSY",
-      "shares": 6.0,
-      "lots": [
-        {
-          "id": "BSY-1",
-          "date": "2026-11-03",
-          "shares": 6.0,
-          "cost": 253.32
-        }
-      ]
-    }
-  ]
+  "cash": 511.97,
+  "positions": []
 }
