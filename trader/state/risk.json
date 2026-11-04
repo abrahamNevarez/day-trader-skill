@@ -1,41 +1,43 @@
 {
-  "date": "2026-11-03",
-  "now_new_york": "2026-11-03 15:46",
+  "date": "2026-11-04",
+  "now_new_york": "2026-11-04 13:10",
   "paper": true,
   "results": [
     {
       "index": 1,
-      "symbol": "BSY",
-      "side": "sell",
-      "kind": "exit",
-      "amount": "6 shares",
-      "value_usd": null,
-      "entry_ref": null,
-      "entry_ref_from": null,
-      "stop": null,
-      "target": null,
-      "risk_per_share": null,
-      "max_loss": null,
-      "reward_risk": null,
-      "fingerprint": "ab6ef2bc5cd6c885",
+      "symbol": "BOX",
+      "side": "buy",
+      "kind": "entry",
+      "amount": "8 shares",
+      "value_usd": 353.6,
+      "entry_ref": 44.2,
+      "entry_ref_from": "limit",
+      "stop": 43.62,
+      "target": 44.78,
+      "risk_per_share": 0.58,
+      "max_loss": 4.64,
+      "reward_risk": 1.0,
+      "fingerprint": "b1c2a97b049b2a9a",
       "verdict": "PASS",
       "reasons": [],
       "warnings": [],
-      "info": []
+      "info": [
+        "entry 44.20 (the limit price), stop 43.62, target 44.78: risk 0.58 a share",
+        "max loss $4.64 (limit $7), reward:risk 1.00 (min 1)",
+        "today before this: 0 of 3 trades, $0 of $15 daily loss"
+      ]
     }
   ],
   "pass": 1,
   "block": 0,
-  "warnings": [
-    "no price for BSY: valued at its cost basis $253.32"
-  ],
-  "cash_after": 253.73,
+  "warnings": [],
+  "cash_after": 158.37,
   "today": {
-    "orders_placed": 2,
-    "entries_placed": 2,
-    "loss_at_risk": 11.01,
+    "orders_placed": 0,
+    "entries_placed": 0,
+    "loss_at_risk": 0.0,
     "day_trades_5d": null
   },
-  "checked_at": "2026-11-03T20:46:49Z",
+  "checked_at": "2026-11-04T18:10:38Z",
   "orders_file": "trader/orders.json"
 }

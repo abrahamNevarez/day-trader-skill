@@ -1,18 +1,32 @@
 {
-  "created_by": "trader-broker",
-  "created_at": "2026-11-03T20:46:46Z",
+  "created_by": "trader-budget",
+  "created_at": "2026-11-04T18:10:38Z",
   "status": "proposed",
   "paper": true,
-  "note": "Flatten ticket. Nothing is placed until trader-risk passes it and you say yes in the chat.",
-  "source": "ticket.py flatten BSY on 2026-11-03",
+  "note": "Proposals only. Nothing is placed until trader-risk passes each order and you say yes to it in the chat.",
+  "source": "trader/plan.json (BOX orb 2026-11-04)",
   "orders": [
     {
-      "symbol": "BSY",
-      "side": "sell",
-      "qty": "6",
-      "type": "market",
+      "symbol": "BOX",
+      "side": "buy",
+      "qty": "8",
+      "type": "limit",
       "time_in_force": "day",
-      "why": "flat by 15:55 New York: closes the BSY day trade before the close (qty from the broker, get_open_position)"
+      "limit_price": "44.20",
+      "order_class": "bracket",
+      "take_profit_limit_price": "44.78",
+      "stop_loss_stop_price": "43.62",
+      "why": "opening-range breakout on BOX: 8 shares, bound by your position cap (8 x 0.58 = $4.64 at the stop)",
+      "plan": {
+        "entry": 44.2,
+        "stop": 43.62,
+        "target": 44.78,
+        "risk_per_share": 0.58,
+        "max_loss": 4.64,
+        "setup": "orb",
+        "entry_time": null,
+        "flat_by": "15:55"
+      }
     }
   ]
 }
