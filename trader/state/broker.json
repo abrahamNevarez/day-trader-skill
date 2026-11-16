@@ -103,6 +103,48 @@
       "qty": "6",
       "price": 43.04,
       "plain": "SELL 6 BSY at 43.04"
+    },
+    {
+      "at": "2026-11-16T10:53:10-05:00",
+      "date": "2026-11-16",
+      "index": 1,
+      "fingerprint": "bc9dbd49715bf2a9",
+      "symbol": "PRVA",
+      "side": "buy",
+      "qty": "14",
+      "kind": "entry",
+      "max_loss": 5.32,
+      "stop": 24.67,
+      "plain": "BUY 14 PRVA, limit 25.05, good for today / stop-loss 24.67 / take-profit 25.81 / max loss about $5.32 if the stop fills at 24.67 (it can fill worse in a fast market)",
+      "status": "approved",
+      "reply": "Yes",
+      "paper": true,
+      "broker": "alpaca"
+    },
+    {
+      "at": "2026-11-16T10:53:18-05:00",
+      "date": "2026-11-16",
+      "index": 1,
+      "fingerprint": "bc9dbd49715bf2a9",
+      "symbol": "PRVA",
+      "side": "buy",
+      "plain": "BUY 14 PRVA, limit 25.05, good for today / stop-loss 24.67 / take-profit 25.81 / max loss about $5.32 if the stop fills at 24.67 (it can fill worse in a fast market)",
+      "status": "placed",
+      "qty": "14",
+      "kind": "entry",
+      "max_loss": 5.32,
+      "stop": 24.67,
+      "broker_order_id": "6f6ddbad-265b-4117-ab4e-5d934786905e"
+    },
+    {
+      "at": "2026-11-16T10:53:26-05:00",
+      "date": "2026-11-16",
+      "status": "filled",
+      "symbol": "PRVA",
+      "side": "buy",
+      "qty": "14",
+      "price": 25.04,
+      "plain": "BUY 14 PRVA at 25.04"
     }
   ]
 }

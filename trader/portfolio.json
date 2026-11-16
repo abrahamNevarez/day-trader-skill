@@ -1,4 +1,17 @@
 {
-  "cash": 511.97,
-  "positions": []
+  "cash": 161.41,
+  "positions": [
+    {
+      "ticker": "PRVA",
+      "shares": 14.0,
+      "lots": [
+        {
+          "id": "PRVA-1",
+          "date": "2026-11-16",
+          "shares": 14.0,
+          "cost": 350.56
+        }
+      ]
+    }
+  ]
 }
