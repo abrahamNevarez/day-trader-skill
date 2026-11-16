@@ -1,43 +1,41 @@
 {
   "date": "2026-11-16",
-  "now_new_york": "2026-11-16 10:52",
+  "now_new_york": "2026-11-16 15:46",
   "paper": true,
   "results": [
     {
       "index": 1,
       "symbol": "PRVA",
-      "side": "buy",
-      "kind": "entry",
+      "side": "sell",
+      "kind": "exit",
       "amount": "14 shares",
-      "value_usd": 350.7,
-      "entry_ref": 25.05,
-      "entry_ref_from": "limit",
-      "stop": 24.67,
-      "target": 25.81,
-      "risk_per_share": 0.38,
-      "max_loss": 5.32,
-      "reward_risk": 2.0,
-      "fingerprint": "bc9dbd49715bf2a9",
+      "value_usd": null,
+      "entry_ref": null,
+      "entry_ref_from": null,
+      "stop": null,
+      "target": null,
+      "risk_per_share": null,
+      "max_loss": null,
+      "reward_risk": null,
+      "fingerprint": "8b96b3f3f39ac095",
       "verdict": "PASS",
       "reasons": [],
       "warnings": [],
-      "info": [
-        "entry 25.05 (the limit price), stop 24.67, target 25.81: risk 0.38 a share",
-        "max loss $5.32 (limit $7), reward:risk 2.00 (min 1)",
-        "today before this: 0 of 3 trades, $0 of $15 daily loss"
-      ]
+      "info": []
     }
   ],
   "pass": 1,
   "block": 0,
-  "warnings": [],
-  "cash_after": 161.27,
+  "warnings": [
+    "no price for PRVA: valued at its cost basis $350.56"
+  ],
+  "cash_after": 161.41,
   "today": {
-    "orders_placed": 0,
-    "entries_placed": 0,
-    "loss_at_risk": 0.0,
+    "orders_placed": 1,
+    "entries_placed": 1,
+    "loss_at_risk": 5.32,
     "day_trades_5d": null
   },
-  "checked_at": "2026-11-16T15:52:24Z",
+  "checked_at": "2026-11-16T20:46:11Z",
   "orders_file": "trader/orders.json"
 }
