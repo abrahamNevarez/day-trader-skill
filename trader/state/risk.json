@@ -1,6 +1,6 @@
 {
   "date": "2026-11-16",
-  "now_new_york": "2026-11-16 15:46",
+  "now_new_york": "2026-11-16 22:27",
   "paper": true,
   "results": [
     {
@@ -36,6 +36,6 @@
     "loss_at_risk": 5.32,
     "day_trades_5d": null
   },
-  "checked_at": "2026-11-16T20:46:11Z",
+  "checked_at": "2026-11-17T03:27:11Z",
   "orders_file": "trader/orders.json"
 }

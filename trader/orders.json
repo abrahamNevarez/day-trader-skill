@@ -1,6 +1,6 @@
 {
   "created_by": "trader-broker",
-  "created_at": "2026-11-16T20:46:11Z",
+  "created_at": "2026-11-17T03:27:11Z",
   "status": "proposed",
   "paper": true,
   "note": "Flatten ticket. Nothing is placed until trader-risk passes it and you say yes in the chat.",
